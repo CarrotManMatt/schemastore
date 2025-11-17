@@ -697,7 +697,6 @@
     },
     "Config": {
       "description": "Direct key configuration with proper TOML types (pytest >=9)\nhttps://docs.pytest.org/en/stable/reference/reference.html#configuration-options",
-      "type": "object",
       "allOf": [
         {
           "$ref": "#/definitions/ConfigOptionsPytest"
