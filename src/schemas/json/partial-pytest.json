@@ -2,7 +2,6 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://json.schemastore.org/partial-pytest.json",
   "description": "JSON schema for pytest configuration options under `[tool.pytest]` in `pyproject.toml`.",
-  "type": "object",
   "x-tombi-table-keys-order": "schema",
   "oneOf": [
     {
@@ -19,20 +18,12 @@
       "deprecated": true,
       "properties": {
         "ini_options": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/IniOptionsPytest"
-            },
-            {
-              "$ref": "#/definitions/IniOptionsAsyncio"
-            }
-          ],
+          "$ref": "#/definitions/IniOptionsPytest",
           "title": "Bridge Configuration Options for `pytest.ini` File",
           "description": "The `ini_options` table is used as a bridge between the existing `pytest.ini` configuration system and future configuration formats. `pytest.ini` takes precedence over `[tool.pytest.ini_options]` in `pyproject.toml`."
         }
       },
       "required": ["ini_options"],
-      "additionalProperties": false,
       "x-tombi-table-keys-order": "schema"
     },
     "IniOptionsPytest": {
@@ -621,11 +612,9 @@
           "default": "false"
         }
       },
-      "additionalProperties": true,
       "x-tombi-table-keys-order": "schema"
     },
     "IniOptionsAsyncio": {
-      "$comment": "additionalProperties is true because the schema is merged with other schemas",
       "description": "Configuration options for pytest-asyncio.\nhttps://pytest-asyncio.readthedocs.io/en/latest/reference/configuration.html",
       "type": "object",
       "deprecated": true,
@@ -670,7 +659,6 @@
           "default": "strict"
         }
       },
-      "additionalProperties": true,
       "x-tombi-table-keys-order": "schema"
     },
     "AsyncioScope": {
@@ -697,23 +685,6 @@
     },
     "Config": {
       "description": "Direct key configuration with proper TOML types (pytest >=9)\nhttps://docs.pytest.org/en/stable/reference/reference.html#configuration-options",
-      "allOf": [
-        {
-          "$ref": "#/definitions/ConfigOptionsPytest"
-        },
-        {
-          "$ref": "#/definitions/ConfigOptionsAsyncio"
-        }
-      ],
-      "properties": {
-        "ini_options": {
-          "not": {}
-        }
-      },
-      "additionalProperties": true,
-      "x-tombi-table-keys-order": "schema"
-    },
-    "ConfigOptionsPytest": {
       "type": "object",
       "properties": {
         "addopts": {
@@ -1070,48 +1041,11 @@
           "description": "DEPRECATED. Alias for strict_xfail. If true, test suite will fail if a test marked with `@pytest.mark.xfail` unexpectedly passes.",
           "deprecated": true,
           "default": false
+        },
+        "ini_options": {
+          "not": {}
         }
       },
-      "additionalProperties": true,
-      "x-tombi-table-keys-order": "schema"
-    },
-    "ConfigOptionsAsyncio": {
-      "description": "Configuration options for pytest-asyncio.\nhttps://pytest-asyncio.readthedocs.io/en/latest/reference/configuration.html",
-      "type": "object",
-      "properties": {
-        "asyncio_default_fixture_loop_scope": {
-          "$ref": "#/definitions/AsyncioScope",
-          "type": "string",
-          "description": "Default event loop scope of asynchronous fixtures. When this configuration option is unset, it defaults to the fixture scope. In future versions of pytest-asyncio, the value will default to function when unset"
-        },
-        "asyncio_default_test_loop_scope": {
-          "$ref": "#/definitions/AsyncioScope",
-          "type": "string",
-          "description": "Default event loop scope of asynchronous tests. When this configuration option is unset, it default to function scope",
-          "default": "function"
-        },
-        "asyncio_debug": {
-          "type": "boolean",
-          "description": "Enables asyncio debug mode for the default event loop used by asynchronous tests and fixtures.",
-          "default": false
-        },
-        "asyncio_mode": {
-          "type": "string",
-          "oneOf": [
-            {
-              "const": "auto",
-              "description": "Automatically handling all async functions by the plugin"
-            },
-            {
-              "const": "strict",
-              "description": "Auto processing disabling (useful if different async frameworks should be tested together, e.g. both pytest-asyncio and pytest-trio are used in the same project"
-            }
-          ],
-          "description": "Sets the asyncio mode for pytest-asyncio.",
-          "default": "strict"
-        }
-      },
-      "additionalProperties": true,
       "x-tombi-table-keys-order": "schema"
     }
   }
