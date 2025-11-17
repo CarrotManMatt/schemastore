@@ -24,6 +24,7 @@
         }
       },
       "required": ["ini_options"],
+      "additionalProperties": false,
       "x-tombi-table-keys-order": "schema"
     },
     "IniOptionsPytest": {
@@ -612,6 +613,7 @@
           "default": "false"
         }
       },
+      "additionalProperties": false,
       "x-tombi-table-keys-order": "schema"
     },
     "IniOptionsAsyncio": {
@@ -659,6 +661,7 @@
           "default": "strict"
         }
       },
+      "additionalProperties": false,
       "x-tombi-table-keys-order": "schema"
     },
     "AsyncioScope": {
@@ -1046,6 +1049,7 @@
           "not": {}
         }
       },
+      "additionalProperties": false,
       "x-tombi-table-keys-order": "schema"
     }
   }
