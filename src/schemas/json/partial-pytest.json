@@ -613,7 +613,7 @@
           "default": "false"
         }
       },
-      "additionalProperties": false,
+      "additionalProperties": true,
       "x-tombi-table-keys-order": "schema"
     },
     "IniOptionsAsyncio": {
@@ -661,7 +661,7 @@
           "default": "strict"
         }
       },
-      "additionalProperties": false,
+      "additionalProperties": true,
       "x-tombi-table-keys-order": "schema"
     },
     "AsyncioScope": {
@@ -1049,7 +1049,7 @@
           "not": {}
         }
       },
-      "additionalProperties": false,
+      "additionalProperties": true,
       "x-tombi-table-keys-order": "schema"
     }
   }
